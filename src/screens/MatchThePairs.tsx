@@ -52,38 +52,38 @@ const MatchThePairs = () => {
   }, [totalMoves]);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.content}>
-        <StatusBar style="light" />
-
-        <View style={[styles.row, styles.stats]}>
-          <Button width="40%" label="Restart" onPress={() => reset()} />
-          <StatsCard title="Total moves" numerator={totalMoves} />
-        </View>
-
-        {ROWS.map((indices, rowIndex) => (
-          <View style={[styles.row, styles.gameRow]} key={rowIndex}>
-            {indices.map((theNumberIndex) => {
-              const inMatchedCard = matchedCards.includes(theNumberIndex);
-              const cardIsVisible =
-                inMatchedCard || comparisonCards.includes(theNumberIndex);
-
-              return (
-                <GameCard
-                  key={theNumberIndex}
-                  index={theNumberIndex}
-                  theNumbers={theNumbers}
-                  onPress={() => handlePress(theNumberIndex)}
-                  selected={activeCardIndex === theNumberIndex}
-                  visible={cardIsVisible}
-                  disabled={inMatchedCard}
-                />
-              );
-            })}
+    <> 
+      <SafeAreaView style={styles.container}>
+        <View style={styles.contentContainer}>
+          <View style={[styles.row, styles.stats]}>
+            <Button width="40%" label="Restart" onPress={() => reset()} />
+            <StatsCard title="Total moves" numerator={totalMoves} />
           </View>
-        ))}
-      </View>
-    </SafeAreaView>
+
+          {ROWS.map((indices, rowIndex) => (
+            <View style={[styles.row, styles.gameRow]} key={rowIndex}>
+              {indices.map((theNumberIndex) => {
+                const inMatchedCard = matchedCards.includes(theNumberIndex);
+                const cardIsVisible =
+                  inMatchedCard || comparisonCards.includes(theNumberIndex);
+
+                return (
+                  <GameCard
+                    key={theNumberIndex}
+                    index={theNumberIndex}
+                    theNumbers={theNumbers}
+                    onPress={() => handlePress(theNumberIndex)}
+                    selected={activeCardIndex === theNumberIndex}
+                    visible={cardIsVisible}
+                    disabled={inMatchedCard}
+                  />
+                );
+              })}
+            </View>
+          ))}
+        </View>
+      </SafeAreaView>
+    </>
   );
 };
 
@@ -92,14 +92,13 @@ const styles = StyleSheet.create({
   // and ensure the board is always centered
   container: {
     flex: 1,
-    paddingVertical: Spacing.lg,
-    alignItems: "center",
-    backgroundColor: Colors.greyDarkest,
+    backgroundColor: '#000',
+    paddingTop: Spacing.md,
   },
-  content: {
+  contentContainer: {
     flex: 1,
-    width: "100%",
-    maxWidth: 550,
+    justifyContent: "center",
+    alignItems: "center",
   },
   row: {
     flexDirection: "row",
