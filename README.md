@@ -1,8 +1,5 @@
 ## Install
 
-I chose to use expo instead of CLI because the setup environment of the current project (MySF) uses old technology
-
-and also i have no pull request branch by branch for this repo :D
 
 Pre-requisite: You'll need [Expo](https://expo.dev/) installed on your machine.
 
